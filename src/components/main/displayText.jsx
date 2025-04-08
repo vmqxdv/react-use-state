@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function displayText(props) {
   const { data } = props;
-  const [text, changetext] = useState('Nessun linguaggio selezionato');
+  const [text, changetext] = useState(<p>Nessun linguaggio selezionato</p>);
 
   const formatText = (element) => {
     return (
@@ -13,7 +13,7 @@ export default function displayText(props) {
   };
 
   const buttons = data.map(element => 
-    <button onClick={() => changetext(formatText(element))}>{element.title}</button>
+    <button key={element.id} onClick={() => changetext(formatText(element))}>{element.title}</button>
   );
 
   return (
@@ -23,7 +23,7 @@ export default function displayText(props) {
       </div>
 
       <div className="display-text">
-        <p>{text}</p>
+        {text}
       </div>
     </>
   )
